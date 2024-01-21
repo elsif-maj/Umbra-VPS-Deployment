@@ -1,0 +1,20 @@
+version: "3"
+services:
+  express-server:
+    image: fdurham/umbra-express-server:latest
+    ports:
+      - 3001:3001
+    restart: always
+    env_file:
+      - ./.env
+  nginx:
+    image: fdurham/umbra-nginx:latest
+    volumes:
+      - /opt/umbra/nginx.conf:/etc/nginx/conf.d/default.conf
+      - /etc/letsencrypt:/etc/letsencrypt
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    depends_on:
+      - express-server

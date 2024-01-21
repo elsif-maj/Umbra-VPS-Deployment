@@ -1,0 +1,10 @@
+.env.prod
+.env.test
+.env
+
+piston/
+shutItDown.sh
+y-sweet/
+build
+node_modules/
+load-testing/
